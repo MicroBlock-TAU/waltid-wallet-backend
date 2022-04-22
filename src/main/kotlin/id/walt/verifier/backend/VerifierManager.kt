@@ -120,10 +120,7 @@ abstract class VerifierManager: BaseService() {
   }
 
   open fun getVerificationRedirectionUri(verificationResult: SIOPResponseVerificationResult, uiUrl: String? = VerifierConfig.config.verifierUiUrl): URI {
-    if(verificationResult.isValid == true)
       return URI.create("$uiUrl/success/?access_token=${verificationResult.state}")
-    else
-      return URI.create("$uiUrl/error/?access_token=${verificationResult.state ?: ""}")
   }
 
   fun getVerificationResult(id: String): SIOPResponseVerificationResult? {
