@@ -70,6 +70,8 @@ abstract class VerifierManager: BaseService() {
   open fun getVerififactionPoliciesFor(req: SIOPv2Request): List<VerificationPolicy> {
     return listOf(
       SignaturePolicy(),
+      JsonSchemaPolicy(),
+      DEQARAccreditationPolicy(),
       ChallengePolicy(req.nonce!!).apply {
         applyToVC = false
       },
