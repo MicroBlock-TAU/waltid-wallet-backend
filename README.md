@@ -6,7 +6,9 @@ Portal backend.
 
 In the [MicroBlock](https://www.tuni.fi/en/research/microblock-advancing-exchange-micro-credentials-ebsi) project the backend has been modified to issue micro
 credentials using the [edclexcel2ebsi](https://github.com/MicroBlock-TAU/edclexcel2ebsi) library which creates credentiasl from EDCL
-data stored to an Excel file. It works with a modified version of the [issuer portal](https://github.com/MicroBlock-TAU/waltid-issuer-portal).
+data stored to an Excel file. It works with a modified version of the [issuer
+portal](https://github.com/MicroBlock-TAU/waltid-issuer-portal) that also can
+verify EDCL micro-credentials.
 
 The provided services include:
 
@@ -141,7 +143,7 @@ unzip package under build/distributions and switch into the new folder. Copy con
 
 ## Running all components with Docker Compose
 
-To spawn the **backend** together with the **wallet frontend**, the **issuer-** and the **verifier-portal**, one can make use of the docker-compose configuration located in folder:
+To spawn the **backend** together with the **wallet frontend**, and the **issuer-** , one can make use of the docker-compose configuration located in folder:
 
 `./docker/`
 
@@ -153,9 +155,7 @@ This configuration will publish the following endpoints by default:
 * **web wallet** on _**[HOSTNAME]:8080**_
   * wallet frontend: http://[HOSTNAME]:8080/
   * wallet API: http://[HOSTNAME]:8080/api/
-* **verifier portal** on _**[HOSTNAME]:8081**_
-  * verifier frontend: http://[HOSTNAME]:8081/
-  * verifier API: http://[HOSTNAME]:8081/verifier-api/
+  * verifier API: http://[HOSTNAME]:8082/verifier-api/
 * **issuer portal** on _**[HOSTNAME]:8082**_
   * issuer frontend: http://[HOSTNAME]:8082/
   * issuer API: http://[HOSTNAME]:8082/issuer-api/
