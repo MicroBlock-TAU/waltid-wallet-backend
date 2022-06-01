@@ -7,17 +7,15 @@ services:
     environment:
       WALTID_DATA_ROOT: ./data-root
       WALTID_WALLET_BACKEND_BIND_ADDRESS: 0.0.0.0
-      EXTERNAL_HOSTNAME: $HOSTNAME$COMPUTERNAME
+      EXTERNAL_HOSTNAME: ${HOSTNAME}${COMPUTERNAME}
     volumes:
       - .:/waltid-wallet-backend/data-root # data store volume incl. config files.
       - ../credentials.xlsm:/waltid-wallet-backend/credentials.xlsm
       - ../config.properties:/waltid-wallet-backend/config.properties
     extra_hosts:
-      - "$HOSTNAME$COMPUTERNAME:host-gateway"
+      - "${HOSTNAME}${COMPUTERNAME}:host-gateway"
   wallet-ui:
-    image: waltid/ssikit-web-wallet:latest # wallet web ui docker image
-  verifier-ui:
-    image: ghcr.io/microblock-tau/waltid-verifier-portal:latest
+    image: ghcr.io/microblock-tau/waltid-web-wallet:latest # wallet web ui docker image
   issuer-ui:
     image: ghcr.io/microblock-tau/waltid-issuer-portal:latest # issuer web ui docker image
   ingress:
@@ -27,8 +25,6 @@ services:
         published: 8080 # wallet ui publish port
         protocol: tcp
         mode: host
-      - target: 81
-        published: 8081 # verifier ui publish port
         protocol: tcp
         mode: host
       - target: 82
